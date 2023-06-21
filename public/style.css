@@ -1,0 +1,22 @@
+
+body {
+    background: #000000;
+    color: #ffffff;
+}
+
+
+.item {
+  display: flex;
+  align-items: center;
+  background-color: #005400;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+.item input {
+  margin-inline: auto;
+  
+}
+.item button {
+  margin-left: 10px;
+}
+

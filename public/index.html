@@ -2,28 +2,15 @@
 <html>
 <head>
   <title>Shopping List</title>
-  <style>
-    .item {
-      display: flex;
-      align-items: center;
-      background-color: blue;
-      color: white;
-      padding: 10px;
-      margin-bottom: 5px;
-    }
-    .item input {
-      margin-right: 10px;
-    }
-    .item button {
-      margin-left: 10px;
-    }
-  </style>
+  <rel ref="stylesheet" src="style.css">
 </head>
 <body>
-  <h1>Shopping List</h1>
-  <input id="productInput" type="text" placeholder="Enter a product" />
+  <header>
+    <h1>Shopping List</h1>
+    <input id="productInput" type="text" placeholder="Enter a product" />
+  </header>
   <div id="shoppingList"></div>
 
-  <script src="app.js"></script>
+  <script src="app.js" defer></script>
 </body>
 </html>
