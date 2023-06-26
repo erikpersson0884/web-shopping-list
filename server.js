@@ -42,7 +42,7 @@ app.post('/api/shopping-list', (req, res) => {
   if (existingItem) {
     existingItem.amount++;
   } else {
-    shoppingList.push({ name, amount: 1 });
+    shoppingList.push({ name, amount: 1, isBought: false });
   }
 
   saveShoppingList();
@@ -50,14 +50,15 @@ app.post('/api/shopping-list', (req, res) => {
   res.json(shoppingList); // Return the updated shopping list as the response
 });
 
-// REST API endpoint to update the amount of an item in the shopping list
+// REST API endpoint to update the amount and isBought status of an item in the shopping list
 app.put('/api/shopping-list/:name', (req, res) => {
   const { name } = req.params;
-  const { amount } = req.body;
+  const { amount, isBought } = req.body;
   const item = shoppingList.find(item => item.name.toLowerCase() === name.toLowerCase());
 
   if (item) {
     item.amount = amount;
+    item.isBought = isBought; // Update isBought parameter
     saveShoppingList();
     res.json(shoppingList); // Return the updated shopping list as the response
   } else {
@@ -86,4 +87,3 @@ app.use(express.static('public'));
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
