@@ -1,4 +1,4 @@
-const productInput = document.getElementById('productInput');
+const inputPrompt = document.getElementById('inputPrompt');
 const shoppingList = document.getElementById('shoppingList');
 
 let items = [];
@@ -10,10 +10,10 @@ function renderShoppingList() {
     const itemElement = document.createElement('div');
     itemElement.className = 'item';
 
-    const nameElement = document.createElement('span');
+    const nameElement = document.createElement('p');
     nameElement.textContent = item.name;
 
-    const amountElement = document.createElement('span');
+    const amountElement = document.createElement('p');
     amountElement.textContent = item.amount;
 
     const increaseButton = document.createElement('button');
@@ -119,13 +119,13 @@ function deleteItem(item) {
     });
 }
 
-productInput.addEventListener('keydown', event => {
+inputPrompt.addEventListener('keydown', event => {
   if (event.key === 'Enter') {
-    const productName = productInput.value.trim();
+    const productName = inputPrompt.value.trim();
 
     if (productName) {
       addItem(productName);
-      productInput.value = '';
+      inputPrompt.value = '';
     }
   }
 });

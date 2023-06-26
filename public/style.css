@@ -4,6 +4,36 @@ body {
     color: #ffffff;
 }
 
+header {
+ /* background: #FF0000; */
+ 
+ /* display: flex;
+ align-items: baseline;
+ justify-content: space-around;
+ gap: 0; */
+
+ width: fit-content;
+ margin-inline: auto;
+
+}
+
+header * {
+  height: fit-content;
+}
+
+header h1 {
+  font-size: 6rem;
+
+  width: fit-content
+}
+
+#inputPrompt {
+  font-size: 3rem;
+
+  height: fit-content;
+  border-radius: 20px;
+}
+
 
 .item {
   display: flex;
@@ -12,11 +42,7 @@ body {
   padding: 10px;
   margin-bottom: 5px;
 }
-.item input {
-  margin-inline: auto;
-  
-}
-.item button {
-  margin-left: 10px;
-}
 
+.item button{
+/*  border-radius: 50%;*/
+}
