@@ -2,6 +2,7 @@
 body {
     background: #000000;
     color: #ffffff;
+
 }
 
 header {
@@ -34,6 +35,9 @@ header h1 {
   border-radius: 20px;
 }
 
+.shoppingList {
+  padding-left: 0;
+}
 
 .item {
   display: flex;
@@ -43,6 +47,7 @@ header h1 {
   margin-bottom: 5px;
 }
 
-.item button{
-/*  border-radius: 50%;*/
+.item button {
+  position: absolute;
+  right: 0px;
 }

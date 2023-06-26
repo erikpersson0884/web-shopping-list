@@ -10,6 +10,15 @@ function renderShoppingList() {
     const itemElement = document.createElement('div');
     itemElement.className = 'item';
 
+    const checkBoxElement = document.createElement('img');
+    checkBoxElement.className = 'checkmark';
+    if (item.isBought == false) {
+      checkBoxElement.src = '/img/checked.svg';
+    } else {
+      checkBoxElement.src = '/img/unchecked.svg';
+    };
+
+
     const nameElement = document.createElement('p');
     nameElement.textContent = item.name;
 
@@ -43,6 +52,8 @@ function renderShoppingList() {
   });
 }
 
+
+
 function addItem(name) {
   const existingItem = items.find(item => item.name.toLowerCase() === name.toLowerCase());
 
@@ -50,7 +61,7 @@ function addItem(name) {
     existingItem.amount++;
     updateItem(existingItem);
   } else {
-    const newItem = { name, amount: 1 };
+    const newItem = { name, amount: 1, isBought: false};
     fetch('/api/shopping-list', {
       method: 'POST',
       headers: {
