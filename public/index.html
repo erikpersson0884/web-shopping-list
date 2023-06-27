@@ -7,12 +7,14 @@
 
 <body>
   <header>
-    <h1>Shopping List</h1>
     <input id="inputPrompt" type="text" placeholder="Enter a product" />
+
+    <button class="removeBoughtItems buttonWithLogo" onclick="removeBoughtItems()">
+      <img src="/img/trashCan.svg"  alt="trashcan">
+    </button>
   </header>
 
   <ul id="shoppingList">
-    <div></div>
   </ul>
 
   <script src="app.js" defer></script>

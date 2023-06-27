@@ -5,7 +5,7 @@
    width="48"
    version="1.1"
    id="svg4"
-   sodipodi:docname="unchecked.svg"
+   sodipodi:docname="increase.svg"
    inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -23,13 +23,17 @@
      inkscape:pagecheckerboard="1"
      inkscape:deskcolor="#505050"
      showgrid="false"
-     inkscape:zoom="8.4852814"
-     inkscape:cx="-2.9462782"
-     inkscape:cy="22.509566"
+     inkscape:zoom="6"
+     inkscape:cx="13.5"
+     inkscape:cy="31.333333"
      inkscape:window-width="1366"
      inkscape:window-height="705"
      inkscape:window-x="514"
      inkscape:window-y="1432"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg4" />
+  <path
+     d="M 428.57143,0 V -428.57143 H 0 V -531.42857 H 428.57143 V -960 h 102.85714 v 428.57143 H 960 v 102.85714 H 531.42857 V 0 Z"
+     id="path2"
+     style="stroke-width:1.71429;fill:#ffffff" />
 </svg>
