@@ -6,18 +6,29 @@ let items = [];
 function renderShoppingList() {
   shoppingList.innerHTML = '';
 
-  items.forEach(item => {
+  // Sort items based on the 'isBought' property
+  items.sort((a, b) => (a.isBought ? 1 : -1));
+
+  items.forEach((item, index) => {
     const itemElement = document.createElement('div');
     itemElement.className = 'item';
 
-    const checkBoxElement = document.createElement('img');
-    checkBoxElement.className = 'checkmark';
-    if (item.isBought == false) {
-      checkBoxElement.src = '/img/checked.svg';
-    } else {
-      checkBoxElement.src = '/img/unchecked.svg';
-    };
 
+    const checkBoxButton = document.createElement('button');
+    checkBoxButton.classList.add('buttonWithLogo');
+    checkBoxButton.classList.add('checkmark');
+    const checkBoxImage = document.createElement('img');
+    checkBoxButton.appendChild(checkBoxImage);
+    if (item.isBought) {
+      checkBoxImage.src = '/img/checked.svg';
+      itemElement.classList.add('checked'); // Add the 'checked' class
+    } else {
+      checkBoxImage.src = '/img/unchecked.svg';
+    }
+    checkBoxButton.addEventListener('click', () => {
+      item.isBought = !item.isBought;
+      updateItem(item);
+    });
 
     const nameElement = document.createElement('p');
     nameElement.textContent = item.name;
@@ -25,15 +36,26 @@ function renderShoppingList() {
     const amountElement = document.createElement('p');
     amountElement.textContent = item.amount;
 
+    const buttonGroup = document.createElement('div');
+    buttonGroup.className = 'buttonGroup'
+
     const increaseButton = document.createElement('button');
-    increaseButton.textContent = '+';
+    increaseButton.classList.add('buttonWithLogo');
+    const increaseImage = document.createElement('img');
+    increaseImage.src = '/img/increase.svg';
+    increaseButton.appendChild(increaseImage);
+
     increaseButton.addEventListener('click', () => {
       item.amount++;
       updateItem(item);
     });
 
     const decreaseButton = document.createElement('button');
-    decreaseButton.textContent = '-';
+    decreaseButton.classList.add('buttonWithLogo');
+    const decreaseImage = document.createElement('img');
+    decreaseImage.src = '/img/decrease.svg';
+    decreaseButton.appendChild(decreaseImage);
+    
     decreaseButton.addEventListener('click', () => {
       if (item.amount > 1) {
         item.amount--;
@@ -43,16 +65,28 @@ function renderShoppingList() {
       }
     });
 
+    const removeButton = document.createElement('button');
+    removeButton.classList.add('buttonWithLogo');
+    const deleteImage = document.createElement('img');
+    deleteImage.src = '/img/trashcan.svg'
+    removeButton.appendChild(deleteImage);
+    removeButton.addEventListener('click', () => {
+      deleteItem(item);
+    });
+
+    buttonGroup.appendChild(increaseButton)
+    buttonGroup.appendChild(decreaseButton)
+    buttonGroup.appendChild(removeButton)
+
+
+    itemElement.appendChild(checkBoxButton);
     itemElement.appendChild(nameElement);
     itemElement.appendChild(amountElement);
-    itemElement.appendChild(increaseButton);
-    itemElement.appendChild(decreaseButton);
+    itemElement.appendChild(buttonGroup);
 
     shoppingList.appendChild(itemElement);
   });
 }
-
-
 
 function addItem(name) {
   const existingItem = items.find(item => item.name.toLowerCase() === name.toLowerCase());
@@ -61,7 +95,7 @@ function addItem(name) {
     existingItem.amount++;
     updateItem(existingItem);
   } else {
-    const newItem = { name, amount: 1, isBought: false};
+    const newItem = { name, amount: 1, isBought: false };
     fetch('/api/shopping-list', {
       method: 'POST',
       headers: {
@@ -129,6 +163,15 @@ function deleteItem(item) {
       console.error(error);
     });
 }
+
+function removeBoughtItems() {
+  for (let item of items){
+    if (item.isBought){
+      deleteItem(item);
+    }
+  }
+}
+
 
 inputPrompt.addEventListener('keydown', event => {
   if (event.key === 'Enter') {
